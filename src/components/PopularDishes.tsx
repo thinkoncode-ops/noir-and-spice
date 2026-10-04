@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Flame, Leaf } from "lucide-react";
+import { ArrowUpRight, Leaf } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { signatureDishes } from "@/data/menu";
@@ -12,17 +12,18 @@ import { DishModal } from "./DishModal";
 
 export function PopularDishes() {
   const [selected, setSelected] = useState<MenuItem | null>(null);
+  const featured = signatureDishes.slice(0, 8);
 
   return (
     <section className="py-24 md:py-32" id="signatures">
       <div className="mx-auto max-w-[1400px] px-4 md:px-6">
         <SectionHeading
-          eyebrow="Signatures"
-          title="THE SIGNATURES"
-          subtitle="Crafted with fire, patience and imagination."
+          eyebrow="Favourites"
+          title="MADE FRESH. SERVED HOT."
+          subtitle="Customer favourites from our Devigarh menu — prices shown are starting rates."
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {signatureDishes.map((dish, i) => (
+          {featured.map((dish, i) => (
             <motion.article
               key={dish.id}
               initial={{ opacity: 0, y: 24 }}
@@ -55,15 +56,8 @@ export function PopularDishes() {
                 </div>
                 <p className="mt-2 line-clamp-2 text-sm text-muted">{dish.description}</p>
                 <div className="mt-4 flex items-center justify-between">
-                  <span className="text-gold">{formatINR(dish.price)}</span>
-                  <span className="flex gap-2">
-                    {dish.vegetarian && (
-                      <Leaf className="h-4 w-4 text-emerald-400" aria-label="Vegetarian" />
-                    )}
-                    {dish.spicy && (
-                      <Flame className="h-4 w-4 text-orange-400" aria-label="Spicy" />
-                    )}
-                  </span>
+                  <span className="text-gold">from {formatINR(dish.price)}</span>
+                  <Leaf className="h-4 w-4 text-gold" aria-label="Vegetarian" />
                 </div>
               </div>
             </motion.article>

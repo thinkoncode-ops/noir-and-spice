@@ -2,25 +2,27 @@
 
 :root,
 [data-theme="dark"] {
-  --ink: #0a0a0a;
-  --surface: #111111;
-  --card: #171717;
-  --cream: #f5f1e8;
-  --muted: #a7a7a7;
-  --gold: #c9a227;
+  --ink: #0c1009;
+  --surface: #141a12;
+  --card: #1a2218;
+  --cream: #f7f4eb;
+  --muted: #a8b0a3;
+  --gold: #8bc34a;
+  --accent-warm: #f5a623;
   --background: var(--ink);
   --foreground: var(--cream);
 }
 
 [data-theme="light"] {
-  --ink: #f5f1e8;
-  --surface: #ebe6dc;
+  --ink: #f7f4eb;
+  --surface: #eef0e8;
   --card: #ffffff;
-  --cream: #0a0a0a;
-  --muted: #5c5c5c;
-  --gold: #9a7b1a;
-  --background: #f5f1e8;
-  --foreground: #0a0a0a;
+  --cream: #1a2218;
+  --muted: #5c6658;
+  --gold: #558b2f;
+  --accent-warm: #e65100;
+  --background: #f7f4eb;
+  --foreground: #1a2218;
 }
 
 @theme inline {

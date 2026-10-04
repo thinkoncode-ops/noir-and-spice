@@ -1,10 +1,10 @@
 import { About } from "@/components/About";
-import { Chef } from "@/components/Chef";
 import { ChefExperience } from "@/components/ChefExperience";
 import { ExperienceBento } from "@/components/ExperienceBento";
+import { OffersSection } from "@/components/OffersSection";
 
 export const metadata = {
-  title: "About — NOIR & SPICE",
+  title: "About — Mr. Sandwich Devigarh",
 };
 
 export default function AboutPage() {
@@ -12,7 +12,7 @@ export default function AboutPage() {
     <div className="pt-28">
       <ChefExperience />
       <About />
-      <Chef />
+      <OffersSection />
       <ExperienceBento />
     </div>
   );

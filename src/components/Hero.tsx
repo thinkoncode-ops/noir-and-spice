@@ -3,7 +3,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
+import { restaurant } from "@/data/restaurant";
 import { easePremium } from "@/lib/motion";
+import { whatsAppOrderUrl } from "@/lib/order";
 import { Button } from "./ui/Button";
 
 export function Hero() {
@@ -23,16 +25,16 @@ export function Hero() {
     >
       <motion.div style={{ scale }} className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=85"
-          alt="NOIR & SPICE dining room"
+          src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=1920&q=85"
+          alt="Fresh sandwiches at Mr. Sandwich"
           fill
           priority
           className="object-cover"
           sizes="100vw"
           data-cursor-label="EXPLORE"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/75 to-ink/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-transparent to-transparent" />
       </motion.div>
 
       <motion.div
@@ -45,26 +47,32 @@ export function Hero() {
           transition={{ duration: 0.8, ease: easePremium }}
           className="mb-4 text-[10px] font-medium uppercase tracking-[0.3em] text-gold"
         >
-          Modern Indian Cuisine
+          100% Pure Vegetarian Café
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1, ease: easePremium }}
-          className="max-w-3xl font-serif text-5xl leading-[1.05] text-cream md:text-7xl lg:text-8xl"
+          className="max-w-3xl font-serif text-4xl leading-[1.08] text-cream md:text-6xl lg:text-7xl"
         >
-          WHERE FIRE
-          <br />
-          MEETS FLAVOR
+          THE TASTE YOU&apos;VE BEEN CRAVING
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: easePremium }}
-          className="mt-6 max-w-lg text-base text-cream/75 md:text-lg"
+          className="mt-4 text-lg text-gold/90 md:text-xl"
         >
-          An elevated dining experience where timeless Indian flavors meet modern
-          culinary artistry.
+          {restaurant.subtagline}
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25, ease: easePremium }}
+          className="mt-4 max-w-lg text-base text-cream/75 md:text-lg"
+        >
+          {restaurant.shortName} — Devigarh&apos;s favourite vegetarian café for
+          sandwiches, pizza, burgers, momos, shakes &amp; flavour chai.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -73,24 +81,15 @@ export function Hero() {
           className="mt-10 flex flex-wrap gap-4"
         >
           <Button href="/menu" showArrow>Explore Menu</Button>
-          <Button href="/reservations" variant="outline">
-            Reserve a Table
+          <Button href={whatsAppOrderUrl()} variant="outline">
+            Order on WhatsApp
           </Button>
         </motion.div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 text-[10px] uppercase tracking-[0.3em] text-cream/50 md:block"
-      >
-        Scroll to explore ↓
-      </motion.div>
-
       <div className="absolute bottom-8 right-4 rounded-2xl border border-cream/10 bg-card/60 px-4 py-3 text-right backdrop-blur-md md:right-8">
-        <p className="text-[10px] uppercase tracking-widest text-gold">Open Today</p>
-        <p className="text-sm text-cream">12:00 PM — 11:30 PM</p>
+        <p className="text-[10px] uppercase tracking-widest text-gold">Open Daily</p>
+        <p className="text-sm text-cream">8:00 AM — 10:00 PM</p>
       </div>
     </section>
   );

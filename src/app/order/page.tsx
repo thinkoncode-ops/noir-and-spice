@@ -5,15 +5,23 @@ import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { useToast } from "@/context/ToastContext";
 import { formatINR } from "@/lib/utils";
+import { whatsAppOrderUrl } from "@/lib/order";
 
 export default function OrderPage() {
-  const { lines, subtotal, tax, total, clearCart } = useCart();
+  const { lines, subtotal, tax, total } = useCart();
   const { showToast } = useToast();
 
   const checkout = () => {
     if (lines.length === 0) return;
-    showToast("Checkout is demo-only — thank you for exploring!");
-    clearCart();
+    const summary = lines
+      .map(
+        ({ item, quantity }) =>
+          `${quantity}× ${item.name} (${formatINR(item.price * quantity)})`
+      )
+      .join("\n");
+    const message = `Hi Mr. Sandwich, I'd like to order:\n\n${summary}\n\nEstimated total: ${formatINR(total)} (incl. tax ${formatINR(tax)})`;
+    window.open(whatsAppOrderUrl(message), "_blank", "noopener,noreferrer");
+    showToast("Opening WhatsApp with your order…");
   };
 
   return (

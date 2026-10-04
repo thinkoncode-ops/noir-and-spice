@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { restaurant } from "@/data/restaurant";
 import { useCart } from "@/context/CartContext";
 import { useTheme } from "@/context/ThemeContext";
+import { whatsAppOrderUrl } from "@/lib/order";
 import { Button } from "./ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +16,7 @@ const links = [
   { href: "/menu", label: "Menu" },
   { href: "/about", label: "About" },
   { href: "/gallery", label: "Gallery" },
+  { href: "/offers", label: "Offers" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -51,12 +53,12 @@ export function Navbar() {
         >
           <Link
             href="/"
-            className="font-serif text-lg tracking-[0.15em] text-cream md:text-xl"
+            className="font-serif text-base tracking-[0.12em] text-cream md:text-lg"
           >
-            {restaurant.name}
+            {restaurant.shortName.toUpperCase()}
           </Link>
 
-          <ul className="hidden items-center gap-8 lg:flex">
+          <ul className="hidden items-center gap-6 xl:flex">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
@@ -96,15 +98,15 @@ export function Navbar() {
               )}
             </button>
             <Button
-              href="/reservations"
+              href={whatsAppOrderUrl()}
               variant="primary"
               className="hidden !py-2.5 !px-5 text-xs md:inline-flex"
             >
-              Reserve a Table
+              Order Now
             </Button>
             <button
               type="button"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/10 text-cream lg:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/10 text-cream xl:hidden"
               onClick={() => setOpen(true)}
               aria-label="Open menu"
               aria-expanded={open}
@@ -121,10 +123,10 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-ink/90 backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-[60] bg-ink/90 backdrop-blur-2xl xl:hidden"
           >
             <div className="flex items-center justify-between p-6">
-              <span className="font-serif text-lg text-cream">{restaurant.name}</span>
+              <span className="font-serif text-lg text-cream">{restaurant.shortName}</span>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
@@ -158,11 +160,11 @@ export function Navbar() {
                 className="pt-4"
               >
                 <Link
-                  href="/reservations"
+                  href={whatsAppOrderUrl()}
                   onClick={() => setOpen(false)}
                   className="inline-flex rounded-full bg-gold px-6 py-3 text-sm font-semibold text-ink"
                 >
-                  Reserve a Table
+                  Order Now
                 </Link>
               </motion.li>
             </ul>

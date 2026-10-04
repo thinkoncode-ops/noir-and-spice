@@ -16,34 +16,41 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "NOIR & SPICE — Modern Indian Restaurant",
+  title: "Mr. Sandwich — Vegetarian Café Devigarh",
   description:
-    "Experience modern Indian cuisine at NOIR & SPICE — an elevated restaurant where bold flavors meet contemporary culinary artistry.",
+    "Pure vegetarian café in Devigarh, Patiala. Sandwiches, pizza, burgers, pasta, momos, shakes, flavour chai & more. Open 8 AM – 10 PM.",
   openGraph: {
-    title: "NOIR & SPICE — Modern Indian Restaurant",
-    description:
-      "Experience modern Indian cuisine at NOIR & SPICE — an elevated restaurant where bold flavors meet contemporary culinary artistry.",
+    title: "Mr. Sandwich — Devigarh",
+    description: restaurant.tagline,
     type: "website",
     locale: "en_IN",
-    siteName: restaurant.name,
+    siteName: restaurant.shortName,
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
-  name: restaurant.name,
+  name: restaurant.shortName,
   description: restaurant.tagline,
   address: {
     "@type": "PostalAddress",
     streetAddress: restaurant.address,
-    addressLocality: "Chandigarh",
+    addressLocality: "Devigarh",
+    addressRegion: "Punjab",
+    postalCode: "147111",
     addressCountry: "IN",
   },
   telephone: restaurant.phone,
-  servesCuisine: "Modern Indian",
-  openingHours: "Mo-Su 12:00-23:30",
-  priceRange: "₹₹₹",
+  email: restaurant.email,
+  servesCuisine: "Vegetarian",
+  openingHours: "Mo-Su 08:00-22:00",
+  priceRange: "₹",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: restaurant.rating,
+    reviewCount: restaurant.reviewCount,
+  },
 };
 
 export default function RootLayout({

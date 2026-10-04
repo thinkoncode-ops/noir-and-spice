@@ -3,7 +3,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Flame, Heart, Leaf, Search } from "lucide-react";
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { menuCategories, menuItems, type MenuCategory, type MenuItem } from "@/data/menu";
 import { useFavorites } from "@/context/FavoritesContext";
 import { formatINR } from "@/lib/utils";
@@ -19,10 +20,18 @@ interface MenuSectionProps {
 }
 
 export function MenuSection({ preview = false, limit }: MenuSectionProps) {
+  const searchParams = useSearchParams();
   const [active, setActive] = useState<string>("All");
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState<MenuItem | null>(null);
   const { toggleFavorite, isFavorite } = useFavorites();
+
+  useEffect(() => {
+    const cat = searchParams.get("cat");
+    if (cat && menuCategories.includes(cat as MenuCategory)) {
+      setActive(cat);
+    }
+  }, [searchParams]);
 
   const filtered = useMemo(() => {
     let items = menuItems;
@@ -45,9 +54,9 @@ export function MenuSection({ preview = false, limit }: MenuSectionProps) {
     <section className="py-24 md:py-32" id="menu">
       <div className="mx-auto max-w-[1400px] px-4 md:px-6">
         <SectionHeading
-          eyebrow="Cuisine"
+          eyebrow="Pure veg"
           title="OUR MENU"
-          subtitle="Seasonal ingredients, bold spices, contemporary plates."
+          subtitle="Real Mr. Sandwich Devigarh prices — edit items anytime in src/data/menu.ts."
         />
 
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">

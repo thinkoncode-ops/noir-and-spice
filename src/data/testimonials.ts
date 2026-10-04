@@ -10,38 +10,29 @@ export const testimonials: Testimonial[] = [
   {
     id: "1",
     quote:
-      "Every dish felt intentional. The flavors were incredible and the atmosphere was unforgettable.",
-    name: "Riya Sharma",
-    role: "Food Writer",
+      "Best vegetarian café in Devigarh. The paneer tikka sandwich and loaded fries are always fresh and tasty.",
+    name: "Local Guest",
     rating: 5,
   },
   {
     id: "2",
     quote:
-      "The chef's table experience redefined Indian fine dining for us. Impeccable service from start to finish.",
-    name: "Arnav & Priya Kapoor",
+      "Flavour chai and special cold coffee are must-tries. Great place for friends and family.",
+    name: "Patiala Foodie",
     rating: 5,
   },
   {
     id: "3",
     quote:
-      "Dark, cinematic, and delicious. The truffle butter chicken alone is worth the visit.",
-    name: "Marcus Chen",
-    role: "Corporate Guest",
+      "Affordable prices, generous portions, and quick service near the bus stand. We order momos and pizza often.",
+    name: "Devigarh Resident",
     rating: 5,
   },
   {
     id: "4",
     quote:
-      "Weekend brunch here feels like a secret you want to share — but only with people you like.",
-    name: "Simran Kaur",
-    rating: 5,
-  },
-  {
-    id: "5",
-    quote:
-      "From cocktails to dessert, every course had a story. Our anniversary dinner was perfect.",
-    name: "Elena Rodriguez",
+      "Pure veg menu with so many options — sandwiches, pasta, shakes, and brownies. Kids love it here.",
+    name: "Family Visitor",
     rating: 5,
   },
 ];

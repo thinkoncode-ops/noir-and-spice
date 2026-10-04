@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { restaurant } from "@/data/restaurant";
 
 export function ChefExperience() {
   return (
@@ -17,8 +18,8 @@ export function ChefExperience() {
           data-cursor-label="EXPLORE"
         >
           <Image
-            src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=900&q=80"
-            alt="Chef plating a signature dish"
+            src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=900&q=80"
+            alt="Vegetarian burgers and café food"
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -31,22 +32,24 @@ export function ChefExperience() {
           viewport={{ once: true }}
         >
           <p className="text-[10px] uppercase tracking-[0.25em] text-gold">
-            Chef&apos;s Experience
+            Devigarh, Patiala
           </p>
           <h2 className="mt-4 font-serif text-4xl leading-tight text-cream md:text-5xl lg:text-6xl">
-            A TABLE WORTH REMEMBERING
+            YOUR LOCAL VEG CAFÉ
           </h2>
           <p className="mt-6 text-base text-muted md:text-lg">
-            From the first flame to the final dessert, every plate is designed to
-            create a moment worth remembering.
+            Homemade sauces, fresh ingredients, and city-style comfort food —
+            from sandwich subs and paneer pizza to flavour chai and special cold
+            coffee. Right behind Devigarh Bus Stand at Garg Super Market.
           </p>
           <Link
             href="/about"
             className="group mt-8 inline-flex items-center gap-2 text-sm font-medium text-gold"
           >
-            Discover Our Story
+            Read our story
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
           </Link>
+          <p className="mt-6 text-sm text-cream/60">{restaurant.hours}</p>
         </motion.div>
       </div>
     </section>
